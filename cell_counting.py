@@ -14,7 +14,7 @@ def count_cell_1(image):
     blurred = cv2.GaussianBlur(gray, (15, 15), 0)
     # Бинаризация изображения
     #_, thresh = cv2.threshold(blurred, 180, 200, cv2.THRESH_BINARY_INV)
-    _, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
+    _, thresh = cv2.threshold(blurred, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
     # Нахождение контуров клеток
     contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     # Подсчет клеток
@@ -26,7 +26,7 @@ def count_cell_2(image):
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     blurred = cv2.GaussianBlur(gray, (5, 5), 0)
     #_, thresh = cv2.threshold(blurred, 150, 255, cv2.THRESH_BINARY_INV)
-    _, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
+    _, thresh = cv2.threshold(blurred, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
     
     # Преобразование в облако точек
     points = np.column_stack(np.where(thresh > 0))
